@@ -6,49 +6,33 @@
 &led_strip { chain-length = <27>; };
 
 / {
-    macros {
-        rbglayer: rbglayer {
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;
-            bindings =
-                <&macro_param_2to2 &rgb_ug RGB_COLOR_HSB_CMD MACRO_PLACEHOLDER &macro_param_1to1>,
-                <&macro_press>,
-                <&mo MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&rgb_ug RGB_COLOR_HSB(93,88,50)>;
-
-            label = "RBGLAYER";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         base {
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R      &kp T                                        &kp Y                                     &kp U      &kp I      &kp O    &kp P     &kp BSPC
-&kp ESC    &kp A  &kp S  &kp D     &kp F      &kp G                                        &kp H                                     &kp J      &kp K      &kp L    &kp SEMI  &kp BSLH
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V      &kp B                                        &kp N                                     &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                         &kp LGUI  &kp ENTER  &rbglayer RGB_COLOR_HSB_VAL(230,100,47) 1    &rbglayer RGB_COLOR_HSB_VAL(320,90,50) 2  &kp SPACE  &kp LALT
+&kp TAB    &kp Q  &kp W  &kp E     &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P     &kp BSPC
+&kp ESC    &kp A  &kp S  &kp D     &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI  &kp BSLH
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                         &kp LGUI  &kp ENTER  &mo 1    &mo 2  &kp SPACE  &kp LALT
             >;
         };
 
         raise {
             bindings = <
-&trans      &trans        &trans        &trans        &trans        &soft_off       &kp PLUS                                   &kp N1  &kp N2  &kp N3  &kp ASTRK      &trans
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp MINUS                                  &kp N4  &kp N5  &kp N6  &kp BACKSLASH  &trans
-&trans      &trans        &trans        &trans        &trans        &trans          &kp EQUAL                                  &kp N7  &kp N8  &kp N9  &kp N0         &trans
-                                        &trans        &trans        &trans          &rbglayer RGB_COLOR_HSB_VAL(180,100,50) 3  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &soft_off       &kp PLUS   &kp N1  &kp N2  &kp N3  &kp ASTRK      &kp DEL
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp MINUS  &kp N4  &kp N5  &kp N6  &kp BACKSLASH  &trans
+&trans      &trans        &trans        &trans        &trans        &trans          &kp EQUAL  &kp N7  &kp N8  &kp N9  &kp N0         &trans
+                                        &trans        &trans        &trans          &mo 3      &trans  &trans
             >;
         };
 
         lower {
             bindings = <
-&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDER                                    &trans    &trans    &trans        &trans     &trans  &trans
-&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON                                &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT  &trans  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp COLON                                    &trans    &trans    &trans        &trans     &trans  &trans
-                        &trans                &trans                 &rbglayer RGB_COLOR_HSB_VAL(180,100,50) 3    &trans    &trans    &trans
+&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDER        &trans    &trans    &trans        &trans     &trans  &trans
+&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON    &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT  &trans  &trans
+&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp COLON        &trans    &trans    &trans        &trans     &trans  &trans
+                        &trans                &trans                 &mo 3            &trans    &trans    &trans
             >;
         };
 
@@ -62,3 +46,4 @@
         };
     };
 };
+
